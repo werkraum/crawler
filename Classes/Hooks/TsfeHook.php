@@ -68,8 +68,6 @@ class TsfeHook
      * @param array  Parameters from frontend
      * @param object  TSFE object
      * @return void
-     *
-     * TODO: Write Unit test
      */
     public function fe_feuserInit(&$params, $ref)
     {
@@ -92,7 +90,6 @@ class TsfeHook
      * @param object  TSFE object
      * @return void
      *
-     * TODO: Write Unit test
      */
     public function fe_isOutputting(&$params, $ref)
     {
