@@ -1,11 +1,6 @@
 <?php
 namespace AOE\Crawler\Tests\Unit\Hooks;
 
-use AOE\Crawler\Hooks\TsfeHook;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
-
 /***************************************************************
  *  Copyright notice
  *
@@ -30,6 +25,10 @@ use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use AOE\Crawler\Hooks\TsfeHook;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 
 class TsfeHookTest extends UnitTestCase
 {
@@ -101,8 +100,6 @@ class TsfeHookTest extends UnitTestCase
 
     /**
      * @test
-     *
-     *
      */
     public function fe_feuserInitCrawlerNotRunningExpectingParamsToBeUntouched()
     {
