@@ -27,7 +27,6 @@ namespace AOE\Crawler\Hooks;
 
 /**
  * Class TsfeHook
- * @package AOE\Crawler\Hooks
  */
 class TsfeHook
 {
@@ -39,15 +38,11 @@ class TsfeHook
      * @param object TSFE object (reference under PHP5)
      * @return void
      *
-     * TODO: Write Unit test
      */
     public function fe_init(&$params, $ref)
     {
-
         // Authenticate crawler request:
         if (isset($_SERVER['HTTP_X_T3CRAWLER'])) {
-            //@todo: ask service to exclude current call for special reasons: for example no relevance because the language version is not affected
-
             list($queueId, $hash) = explode(':', $_SERVER['HTTP_X_T3CRAWLER']);
             list($queueRec) = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('*', 'tx_crawler_queue', 'qid=' . intval($queueId));
 
@@ -104,6 +99,8 @@ class TsfeHook
      * @param array  Parameters from frontend
      * @param object  TSFE object
      * @return void
+     *
+     * // TODO: Functional Tests
      */
     public function fe_eofe(&$params, $ref)
     {
@@ -120,7 +117,7 @@ class TsfeHook
              */
             if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['crawler']['pollSuccess'])) {
                 foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['crawler']['pollSuccess'] as $pollable) {
-                    if (is_array($params['pObj']->applicationData['tx_crawler']['content']['parameters']['procInstructions']) && in_array($pollable, $params['pObj']->applicationData['tx_crawler']['content']['parameters']['procInstructions'])) {
+                    if (is_array($params['pObj']->applicationData['tx_crawler']['parameters']['procInstructions']) && in_array($pollable, $params['pObj']->applicationData['tx_crawler']['parameters']['procInstructions'], false)) {
                         if (empty($params['pObj']->applicationData['tx_crawler']['success'][$pollable])) {
                             $params['pObj']->applicationData['tx_crawler']['errorlog'][] = 'Error: Pollable extension (' . $pollable . ') did not complete successfully.';
                         }
