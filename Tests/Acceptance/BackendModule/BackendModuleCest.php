@@ -67,4 +67,29 @@ class BackendModuleCest
         $I->click('Update');
         $I->waitForText('Count: 43');
     }
+
+    public function crawlerUrls(BackendModule $I, Admin $adminStep, PageTree $pageTree): void
+    {
+        $I->openCrawlerBackendModule($adminStep, $pageTree);
+        $I->switchToContentFrame();
+        $I->selectOption('configurationSelection[]', 'default');
+        $I->selectOption('SET[depth]', 99);
+        $I->click('Crawl URLs');
+        $I->waitForText('43 URLs submitted');
+        $I->click('Continue and show Log');
+        $I->waitForText('http://crawler-typo3v9.ddev.site/index.php?id=1&cHash=');
+    }
+
+    public function flushQueue(BackendModule $I, Admin $adminStep, PageTree $pageTree): void
+    {
+        $I->openCrawlerBackendModule($adminStep, $pageTree);
+        $I->switchToContentFrame();
+        $I->selectOption('configurationSelection[]', 'default');
+        $I->selectOption('SET[depth]', 99);
+        $I->click('Crawl URLs');
+        $I->waitForText('43 URLs submitted');
+        $I->click('Continue and show Log');
+        $I->waitForText('http://crawler-typo3v9.ddev.site/index.php?id=1&cHash=');
+        $I->click('Flush entire queue');
+    }
 }

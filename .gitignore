@@ -38,6 +38,7 @@ var/tests
 .devbox/var
 .devbox/vendor
 .devbox/public/index.php
+.devbox/public/typo3temp
 .devbox/public/typo3
 .devbox/public/typo3conf/ext
 .devbox/public/typo3conf/PackageStates.php
