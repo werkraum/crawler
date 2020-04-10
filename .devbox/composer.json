@@ -16,15 +16,15 @@
         }
     ],
     "require": {
-        "typo3/minimal": "^9.5",
-        "typo3/cms-introduction": "~4.0",
-        "typo3/cms-tstemplate": "^9.5",
-        "typo3/cms-info": "^9.5",
-        "typo3/cms-belog": "^9.5",
         "bk2k/bootstrap-package": "*",
-        "helhum/typo3-console": "^5.6",
+        "typo3/cms-beuser": "^10.3",
+        "typo3/minimal": "^10.3",
+        "typo3/cms-introduction": "*",
+        "typo3/cms-tstemplate": "^10.3",
+        "typo3/cms-belog": "^10.3",
+        "typo3/cms-info": "^10.3",
         "aoepeople/crawler": "dev-typo3v9",
-        "typo3/cms-beuser": "^9.5"
+        "typo3/cms-seo": "^10.3"
     },
     "config": {
         "vendor-dir": "vendor",
