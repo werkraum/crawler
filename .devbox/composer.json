@@ -23,8 +23,9 @@
         "typo3/cms-tstemplate": "^10.3",
         "typo3/cms-belog": "^10.3",
         "typo3/cms-info": "^10.3",
-        "aoepeople/crawler": "dev-typo3v9",
-        "typo3/cms-seo": "^10.3"
+        "aoepeople/crawler": "dev-master",
+        "typo3/cms-seo": "^10.3",
+        "helhum/typo3-console": "v6.0.0-beta1"
     },
     "config": {
         "vendor-dir": "vendor",
