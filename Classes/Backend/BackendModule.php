@@ -28,6 +28,7 @@ namespace AOE\Crawler\Backend;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use _HumbugBox58fd4d9e2a25\Amp\Process\ProcessException;
 use AOE\Crawler\Configuration\ExtensionConfigurationProvider;
 use AOE\Crawler\Controller\CrawlerController;
 use AOE\Crawler\Domain\Model\Reason;
@@ -929,7 +930,7 @@ class BackendModule
     /**
      * Method to handle incomming actions of the process overview
      *
-     * @throws \Exception
+     * @throws \AOE\Crawler\Exception\ProcessException
      */
     protected function handleProcessOverviewActions(): void
     {
@@ -946,7 +947,7 @@ class BackendModule
                 break;
             case 'addProcess':
                 if ($this->processManager->startProcess() === false) {
-                    throw new \Exception($this->getLanguageService()->sL('LLL:EXT:crawler/Resources/Private/Language/locallang.xlf:labels.newprocesserror'));
+                    throw new \AOE\Crawler\Exception\ProcessException($this->getLanguageService()->sL('LLL:EXT:crawler/Resources/Private/Language/locallang.xlf:labels.newprocesserror'));
                 }
                 MessageUtility::addNoticeMessage($this->getLanguageService()->sL('LLL:EXT:crawler/Resources/Private/Language/locallang.xlf:labels.newprocess'));
                 break;

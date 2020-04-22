@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AOE\Crawler\Domain\Model;
 
+use AOE\Crawler\Exception\ProcessCollectionException;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -40,12 +42,12 @@ class ProcessCollection extends \ArrayObject
      *
      * @param mixed $index
      * @return Process
-     * @throws \Exception
+     * @throws ProcessCollectionException
      */
     public function offsetGet($index): Process
     {
         if (!parent::offsetExists($index)) {
-            throw new \Exception('Index "' . var_export($index, true) . '" for \AOE\Crawler\Domain\Model\Process are not available');
+            throw new ProcessCollectionException('Index "' . var_export($index, true) . '" for \AOE\Crawler\Domain\Model\Process are not available', 1587535036);
         }
         return parent::offsetGet($index);
     }
@@ -75,7 +77,7 @@ class ProcessCollection extends \ArrayObject
     public function append($subject): void
     {
         if (!$subject instanceof Process) {
-            throw new \InvalidArgumentException('Wrong parameter type given, "\AOE\Crawler\Domain\Model\Process" expected!');
+            throw new \InvalidArgumentException('Wrong parameter type given, "\AOE\Crawler\Domain\Model\Process" expected!', 1587535037);
         }
         parent::append($subject);
     }

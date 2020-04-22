@@ -31,6 +31,8 @@ namespace AOE\Crawler\Api;
 use AOE\Crawler\Controller\CrawlerController;
 use AOE\Crawler\Domain\Repository\ProcessRepository;
 use AOE\Crawler\Domain\Repository\QueueRepository;
+use AOE\Crawler\Exception\InvalidTimestampException;
+use AOE\Crawler\Exception\NoCrawlerControllerException;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -122,7 +124,7 @@ class CrawlerApi
      *
      * @return CrawlerController Instance of the crawler lib
      *
-     * @throws \Exception
+     * @throws NoCrawlerControllerException
      */
     protected function findCrawler()
     {
@@ -134,7 +136,7 @@ class CrawlerApi
         if (is_object($this->crawlerController)) {
             return $this->crawlerController;
         } else {
-            throw new \Exception('no crawler object', 1512659759);
+            throw new NoCrawlerControllerException('no crawler object', 1512659759);
         }
     }
 
@@ -428,7 +430,7 @@ class CrawlerApi
      *
      * @return array data
      *
-     * @throws \Exception
+     * @throws InvalidTimestampException
      */
     public function getPerformanceData($start, $end, $resolution)
     {
@@ -440,7 +442,7 @@ class CrawlerApi
         $data['duration'] = $data['end'] - $data['start'];
 
         if ($data['duration'] < 1) {
-            throw new \Exception('End timestamp must be after start timestamp', 1512659945);
+            throw new InvalidTimestampException('End timestamp must be after start timestamp', 1512659945);
         }
 
         for ($slotStart = $start; $slotStart < $end; $slotStart += $resolution) {
