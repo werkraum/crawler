@@ -1,4 +1,4 @@
-﻿
+
 
 .. ==================================================
 .. FOR YOUR INFORMATION
@@ -15,17 +15,15 @@
 .. role::   php(code)
 
 
-Features
---------
+Automatic add pages to Queue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Clear Cache
+~~~~~~~~~~~
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
+In version 9.1.0 the feature was added, that when you clear cache for a given page, it will automatically be added to the crawler queue.
 
-   AutomaticAddPagesToQueue/Index
-   PollableProcessingInstructions/Index
-   MultiprocessSupport/Index
-   Hooks/Index
+.. image:: /Images/backend_clear_cache.png
+.. image:: /Images/backend_clear_cache_queue.png
 
+This will then be executed by the next crawler run.

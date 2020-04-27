@@ -38,5 +38,3 @@ individual userfunction. Register your function here:
 ::
 
    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['crawler']['pageVeto'][] = 'EXT:yourext/.../class.tx_yourext_foo.php: tx_yourext_foo->bar';
-
-
